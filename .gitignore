@@ -1,0 +1,4 @@
+./notebooks/*
+.env*
+!.env_template
+./.jupyter/*

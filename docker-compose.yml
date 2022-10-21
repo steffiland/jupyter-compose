@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  jupyter:
+    ports:
+        - ${EXPOSED_PORT:-8888}:8888
+    volumes:
+        - "${HOST_NOTEBOOKDIR:-./notebooks}:/home/jup/notebooks"
+        - "${HOST_JUPYTER_CONFIG_DIR:-./.jupyter}:/home/jup/.jupyter"
+        #- './jupyter_notebook_config.json:/home/jup/.jupyter/jupyter_notebook_config.json'
+    container_name: jupyter
+    environment:
+      # by default, run with empty password. can be overwritten via .env file
+      #PWHASH: "${PWHASH:-argon2:$$argon2id$$v=19$$m=10240,t=10,p=8$$NFADbhk9UBykJ60vhWoc/w$$oqfRZN/tw+HCK1Q4t0ySoPkj3Shmx5z1nkffeYuDgrE}"
+      PWHASH: "${PWHASH?no password set in .env file}"
+    build:
+      context: .
+    command: /opt/conda/bin/jupyter notebook --ip='*' --port=8888 --no-browser --notebook-dir=~/notebooks  --NotebookApp.password=${PWHASH}
+      
