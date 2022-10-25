@@ -14,5 +14,5 @@ services:
       PWHASH: "${PWHASH?no password set in .env file}"
     build:
       context: .
-    command: /opt/conda/bin/jupyter notebook --ip='*' --port=8888 --no-browser --notebook-dir=~/notebooks  --NotebookApp.password=${PWHASH}
+    command: /opt/conda/bin/mamba run --no-capture-output -p /home/jup/env jupyter notebook --ip='*' --port=8888 --no-browser --notebook-dir=~/notebooks  --NotebookApp.password=${PWHASH}
       

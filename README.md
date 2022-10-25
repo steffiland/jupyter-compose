@@ -7,3 +7,4 @@
 ### im Image enthaltene Features
 * [jupyter_contrib_nbextensions](https://anaconda.org/conda-forge/jupyter_contrib_nbextensions)
 * [jupyterthemes](https://anaconda.org/conda-forge/jupyterthemes)
+* rise - reveal.js, um Jupyter Notebooks nutzen für interaktive Präsentation im Broswer
